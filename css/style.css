@@ -133,8 +133,7 @@ header {
   text-transform: uppercase;
   color: black;
   padding-left: 35px;
-  position: relative;
-  top: 15px;
+  padding-top: 15px;
 }
 
 .logo::first-letter {
@@ -153,8 +152,7 @@ header {
   text-transform: uppercase;
   color: #cc3636;
   padding-left: 35px;
-  position: relative;
-  top: 15px;
+  padding-top: 15px;
   content: "the crystal palace";
 }
 
@@ -389,8 +387,6 @@ nav .open > ul > li > a::before {
 #tours .section-content {
   width: 1200px;
   margin: 40px auto;
-  gap: 20px;
-  opacity: 0.8;
 }
 
 #tours .section-item {
@@ -404,7 +400,7 @@ nav .open > ul > li > a::before {
 }
 
 #tours .tour-props span {
-  padding: 0px 5px;
+  padding: 0px 10px;
   border-left: 1px solid black;
 }
 
@@ -424,6 +420,7 @@ nav .open > ul > li > a::before {
   width: 40%;
   height: unset;
   margin: 20px;
+  opacity: 0.8;
 }
 
 #tour1,
@@ -446,6 +443,27 @@ nav .open > ul > li > a::before {
   float: left;
   margin-top: 0;
   margin-left: 0;
+}
+
+.tour-stars::before{
+  color: #cc3636;
+  font-family: "Font Awesome 6 Free";
+  content: "\f005";
+  padding-right: 10px;
+}
+
+.tour-duration::before{
+  color: #cc3636;
+  font-family: "Font Awesome 6 Free";
+  content: "\f073";
+  padding-right: 10px;
+
+}
+.tour-price::before{
+  color: #cc3636;
+  font-family: "Font Awesome 6 Brands";
+  content: "\f15a";
+  padding-right: 10px;
 }
 
 /* Pricing section */
@@ -484,10 +502,8 @@ nav .open > ul > li > a::before {
 #price .section-content:hover:before {
     background-color: rgba(255, 255, 255, 0.6);
 }
+
 /* TODO zoomin, paddings ++ */
-/* #price .section-content:hover {
-  opacity: 0.4;
-} */
 
 #price .section-item {
   transform: scaleX(-1);
@@ -529,9 +545,9 @@ nav .open > ul > li > a::before {
 }
 
 #price .section-item > h3 {
+  display: inline-block;
   text-align: left;
   padding: 0;
-  padding-bottom: 10px;
   color: black;
 }
 
@@ -540,6 +556,10 @@ nav .open > ul > li > a::before {
   position: absolute;
   top: 10px;
   right: 15px;
+}
+
+#price .section-item > ul {
+  padding-top: 10px;
 }
 
 #price .section-item li {
@@ -559,4 +579,107 @@ nav .open > ul > li > a::before {
 #price .section-item:hover span {
   visibility: visible;
   color: blue;
+}
+
+#price .section-item:hover h3{
+  border-bottom: 1px solid #363535;
+}
+
+/* clients section */
+
+#clients .heading {
+  text-align: center;
+  padding-bottom: 15px;
+  margin-top: 2%;
+}
+
+#clients .section-content {
+  max-width: 1200px;
+  min-width: 768px;
+  margin: 40px auto;
+  opacity: 0.8;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: repeat(2,1fr);
+}
+
+#clients .section-item img{
+    display: flex;
+  flex-direction: column;
+}
+
+#clients .section-item img{
+  width: 200px;
+  display: inline-block;
+}
+
+#clients .section-item:first-child img{
+  border-top-left-radius: 100px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 60px;
+  box-shadow: 0 0 8px 5px #888888 ;
+  float: right;
+}
+
+#clients .section-item:last-child img{
+  border-top-left-radius: 50px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 60px;
+  border-bottom-left-radius: 100px;
+  box-shadow: 0 0 8px 5px #888888 ;
+  float: left;
+
+}
+
+#clients .section-item blockquote{
+  background-color: #e8e7e7;
+  width: 30%;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+}  
+
+#clients .section-item:first-child blockquote{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 50%;
+}
+
+#clients .section-item:first-child:after {
+  content: " ";
+  background-color: blue;
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 50%;
+  position: relative;
+  left: 30px;
+  top:35px;
+}
+
+#clients .section-item:last-child blockquote{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 50%;
+}
+
+#clients .section-item:last-child:before {
+  content: " ";
+  background-color: blue;
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 50%;
+  position: relative;
+  right: 30px;
+  top:35px;
 }
