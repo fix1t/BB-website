@@ -26,6 +26,7 @@
   text-decoration: none;
   font-size: 16px;
   line-height: 1.5;
+  transition: all .5s ease;
 }
 
 h2 {
@@ -269,7 +270,7 @@ nav .open > ul > li > a::before {
 }
 
 #header-form > form input:last-child {
-  background-color: #cc3636;
+  background-color: rgb(204, 54, 54);
   color: white;
 }
 
@@ -283,28 +284,39 @@ nav .open > ul > li > a::before {
   background-size: contain;
   background-position-x: 100%;
   background-clip: content-box;
-  margin: 10% auto;
-  z-index: -3;
+  margin: 11% auto 5%;
+  display: block;
+  position:relative;
 }
 
 #about .heading {
-  max-width: 60%;
-  background-color: green;
-  position: relative;
-  top: 27%;
+  width: calc(1200px - 43%);
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
   background-color: #e8e7e7;
   padding-left: 43%;
   padding-bottom: 16%;
 }
 
-#about img {
+#about:hover .heading{
+  background-color: #f2cdcc;
+  border: 1px solid #cc3636;
+}
+
+#about > img {
   width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 15px;  
+  transform: translate(0, -50%);
   border-radius: 10px;
-  position: relative;
-  bottom: 55%;
-  margin: 20px;
   opacity: 0.8;
-  border-radius: 10px;
+}
+
+#about:hover img{
+  transform: translate(0, -50%) scale(1.03);
+  opacity: 1.0;
 }
 
 .heading > span {
@@ -324,10 +336,10 @@ nav .open > ul > li > a::before {
 }
 
 #about > p {
-  position: relative;
-  bottom: 125%;
-  left: 43%;
-  width: 57%;
+  position:absolute;
+  top: 50%;
+  left: 43%;  
+  transform: translate(0, -50%);
 }
 
 /* Services section */
@@ -352,23 +364,41 @@ nav .open > ul > li > a::before {
 
 #services .section-item {
   min-width: 250px;
+  opacity: 0.8;
+  position: relative;
 }
 
 .section-item h3 {
   text-align: center;
   font-size: 1.2em;
-  padding: 20px;
   text-transform: capitalize;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 #services .section-item img {
   height: 300px;
   width: 100%;
-  opacity: 0.8;
+  padding-top: 20px;
+
 }
 
 .section-item p {
   padding-top: 15px;
+}
+
+/* sectionitem hover behavior */
+
+.section-item:hover{
+  opacity: 1.0;
+}
+
+.section-item:hover img{
+  transform: scale(1.03);
+}
+
+.section-item:hover h3{
+  border-bottom: 1px solid #cc3636;
 }
 
 /* Tours section */
@@ -391,12 +421,17 @@ nav .open > ul > li > a::before {
 
 #tours .section-item {
   margin: 40px auto 20px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   border-bottom: 1px dotted black;
+  opacity: 0.8;
 }
 
 #tours .section-item:last-child {
   border-bottom: 0px dotted black;
+}
+
+#tours .tour-props {
+  padding-top: 15px;
 }
 
 #tours .tour-props span {
@@ -413,14 +448,12 @@ nav .open > ul > li > a::before {
 }
 
 #tours h3 {
-  text-align: right;
+  display: inline-block;
 }
 
 #tours img {
-  width: 40%;
-  height: unset;
+  width: 38%;
   margin: 20px;
-  opacity: 0.8;
 }
 
 #tour1,
@@ -583,6 +616,7 @@ nav .open > ul > li > a::before {
 
 #price .section-item:hover h3{
   border-bottom: 1px solid #363535;
+  
 }
 
 /* clients section */
@@ -613,6 +647,52 @@ nav .open > ul > li > a::before {
   display: inline-block;
 }
 
+#clients .section-item blockquote{
+  background-color: #e8e7e7;
+  width: 30%;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+}  
+
+#clients .section-item:hover blockquote {
+  background-color: #cc3636;
+  color: #e8e7e7;
+}
+
+#clients .section-item:hover img {
+  box-shadow: none ;
+}
+
+#clients .section-item:hover  {
+  box-shadow: none ;
+}
+/* #clients .section-item:hover:first-child {
+  background-color: #f2cdcc;
+} */
+
+#clients .section-item:first-child blockquote{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 50%;
+}
+
+#clients .section-item:first-child:after {
+  content: " ";
+  background-color: #e8e7e7;
+  display: inline-block;
+  width: 70px;
+  height: 30px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 50%;
+  position: relative;
+  left: 30px;
+  top:35px;
+}
+
 #clients .section-item:first-child img{
   border-top-left-radius: 100px;
   border-top-right-radius: 50px;
@@ -632,36 +712,6 @@ nav .open > ul > li > a::before {
 
 }
 
-#clients .section-item blockquote{
-  background-color: #e8e7e7;
-  width: 30%;
-  padding: 10px;
-  text-align: center;
-  display: inline-block;
-}  
-
-#clients .section-item:first-child blockquote{
-  border-top-left-radius: 10px;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 50%;
-}
-
-#clients .section-item:first-child:after {
-  content: " ";
-  background-color: blue;
-  display: inline-block;
-  width: 70px;
-  height: 30px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 50%;
-  position: relative;
-  left: 30px;
-  top:35px;
-}
-
 #clients .section-item:last-child blockquote{
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 50%;
@@ -671,7 +721,7 @@ nav .open > ul > li > a::before {
 
 #clients .section-item:last-child:before {
   content: " ";
-  background-color: blue;
+  background-color: #e8e7e7;
   display: inline-block;
   width: 70px;
   height: 30px;
@@ -682,4 +732,55 @@ nav .open > ul > li > a::before {
   position: relative;
   right: 30px;
   top:35px;
+  margin-left: 70px;
 }
+
+/* footer */
+
+footer {
+  background-color: #363535;
+}
+
+footer h2{
+  font-size: 1.5em;
+  letter-spacing: 0.2rem;
+}
+
+footer h2, footer p, footer a, footer span, .contacts span >a{
+  color: white;
+}
+
+footer > :nth-child(1){
+  max-width: 1200px;
+  margin: 1% auto;
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  gap: 15px;
+
+}
+
+footer > :nth-child(2){
+  max-width: 1200px;
+  margin: 1% auto;
+  margin: 1% auto;
+  padding-top: 20;
+  border-top: 3px solid white;
+}
+
+#summary{
+  grid-column: 1 / span 5; 
+}
+
+#sumary h2{
+  text-transform: uppercase;
+  
+}
+
+#links{
+  grid-column: 6 / span 2; 
+}
+#contact{
+  grid-column: 8 / span 3; 
+}
+
+/* hover behavior */
