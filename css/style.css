@@ -26,17 +26,67 @@
   text-decoration: none;
   font-size: 16px;
   line-height: 1.5;
-  transition: all 0.5s ease;
+  transition: all 0s ease;
 }
 
 h2 {
   font-size: 32px;
-  letter-spacing: 0.4rem;
+  letter-spacing: 1rem;
 }
 
-/* POPUP */
 #heisenberg {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition-delay: 0;
+}
+
+body > .open {
+  visibility: visible !important;
+  height: 120px;
+  width: 300px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  position: fixed !important;
+  top: 80px;
+  left: calc(50% - 150px);
+  transition-duration: 0.5s;
+  transform: translate(0, -40px);
+  background-color: blue;
+  box-shadow: 0 0 8px 8px blue;
+  border: 2px solid white;
+  border-radius: 20px;
+  opacity: 0.8 !important;
+  z-index: 1;
+}
+
+body > .open > img {
+  height: 100%;
+  width: 100%;
+  padding: 0 5px;
+}
+
+body > .open > div {
+  display: inline-block;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+body > .open > div span {
+  color: #e8e7e7;
+  display: block;
+  margin-left: 20px;
+}
+
+body > .open > div span:first-child {
+  margin-top: 30px;
+}
+
+body > .open > div span b {
+  color: #e8e7e7;
+  text-transform: uppercase;
 }
 
 /* HEADER */
@@ -137,6 +187,7 @@ header {
   color: black;
   padding-left: 35px;
   padding-top: 15px;
+  transition-duration: 0s;
 }
 
 .logo::first-letter {
@@ -144,18 +195,18 @@ header {
 }
 
 .logo a:hover {
-  display: none;
+  color: transparent;
+  position: absolute;
+  top: 0;
+  transition-duration: 0s;
 }
 
-.logo:hover::after {
+.logo a:hover::before {
   font-size: 32px;
   font-family: Bebas Neue;
   font-weight: 600;
-  display: block;
   text-transform: uppercase;
   color: #cc3636;
-  padding-left: 35px;
-  padding-top: 15px;
   content: "the crystal palace";
 }
 
@@ -183,24 +234,33 @@ nav > ul > li {
 }
 
 nav ul li a {
-  color: #363535;
+  color: #888888;
   margin-right: 5px;
-  padding: 5px 5px 0px;
+  padding: 7px 5px;
 }
 
 nav ul li:last-child a {
-  color: #363535;
+  color: #888888;
   margin-right: 50px;
 }
 
 nav > ul > li > a:hover {
   border-bottom: 1px solid #363535;
+  color: black;
 }
 
 /* TODO: Dropdown menu  */
 
+#tours-button {
+  max-width: 60px;
+}
+
 #tours-button ul {
   display: none;
+}
+
+nav .open ul {
+  display: block !important;
 }
 
 nav .open {
@@ -208,16 +268,26 @@ nav .open {
 }
 
 nav .open > ul {
-  visibility: visible;
   list-style-type: none;
   position: relative;
+  width: 100px;
+  left: 30px;
+  top: 12px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 8px white;
+}
+
+nav .open > ul > li:hover a {
+  color: black;
 }
 
 nav .open > ul > li > a {
   margin: 0;
   display: block;
-  background-color: yellow;
+  color: #888888;
 }
+
 nav .open > ul > li > a::before {
   color: #cc3636;
   content: ">";
@@ -267,8 +337,18 @@ nav .open > ul > li > a::before {
   border-radius: 5px;
 }
 
+#header-form > form select:focus {
+  border: 2px solid blue;
+  outline: none;
+}
+
 #header-form > form input:focus {
-  border: 3px solid blue;
+  border: 2px solid blue;
+  outline: none;
+}
+
+#header-form > form input:last-child:hover {
+  opacity: 0.8;
 }
 
 #header-form > form input:last-child {
@@ -276,38 +356,37 @@ nav .open > ul > li > a::before {
   background-color: #cc3636;
 }
 
-/* blue button */
-
-#header-form input[name="persons"]:valid + input[type="submit"] {
+#header-form form:valid input[type="submit"] {
   background-color: blue;
 }
-
-/* input[name="checkout"]:invalid + input[type="submit"],
-input[name="persons"]:invalid + input[type="submit"]{ */
 
 /* About section */
 
 #about {
-  height: 60vh;
-  width: 1200px;
+  height: 620px;
+  max-width: 1200px;
+  min-width: 1000px;
+  width: 100%;
   background-image: url("../img/meth.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position-x: 100%;
   background-clip: content-box;
-  margin: 11% auto 5%;
+  margin: 170px auto 5%;
   display: block;
   position: relative;
 }
 
 #about .heading {
-  width: calc(1200px - 43%);
   position: absolute;
   top: 50%;
+  right: 0;
+  left: 0;
   transform: translate(0, -50%);
   background-color: #e8e7e7;
-  padding-left: 43%;
+  padding-left: 40%;
   padding-bottom: 16%;
+  transition-duration: 0.5s;
 }
 
 #about:hover .heading {
@@ -316,13 +395,15 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 }
 
 #about > img {
-  width: 40%;
+  height: 100%;
+  width: 37%;
   position: absolute;
   top: 50%;
   left: 15px;
   transform: translate(0, -50%);
   border-radius: 10px;
   opacity: 0.8;
+  transition-duration: 0.5s;
 }
 
 #about:hover img {
@@ -331,12 +412,13 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 }
 
 .heading > span {
+  font-family: Bebas Neue;
   color: #cc3636;
   position: relative;
   top: 15px;
   text-transform: uppercase;
   font-weight: 1000;
-  letter-spacing: 4px;
+  letter-spacing: 0.4rem;
 }
 
 .heading > h2 {
@@ -349,7 +431,7 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 #about > p {
   position: absolute;
   top: 50%;
-  left: 43%;
+  left: 40%;
   transform: translate(0, -50%);
 }
 
@@ -357,8 +439,8 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 
 #services {
   background-color: #e8e7e7;
-  height: 72vh;
-  padding-top: 30px;
+  height: fit-content;
+  padding: 40px 0;
 }
 
 #services .heading {
@@ -373,10 +455,19 @@ input[name="persons"]:invalid + input[type="submit"]{ */
   gap: 20px;
 }
 
+@media screen and (max-width: 1200px) {
+  #services .section-content {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 #services .section-item {
-  min-width: 250px;
+  width: 100%;
   opacity: 0.8;
   position: relative;
+  margin: auto;
 }
 
 .section-item h3 {
@@ -391,6 +482,7 @@ input[name="persons"]:invalid + input[type="submit"]{ */
   height: 300px;
   width: 100%;
   padding-top: 20px;
+  object-fit: cover;
 }
 
 .section-item p {
@@ -405,6 +497,7 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 
 .section-item:hover img {
   transform: scale(1.03);
+  transition-duration: 0.5s;
 }
 
 .section-item:hover h3 {
@@ -425,7 +518,9 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 }
 
 #tours .section-content {
-  width: 1200px;
+  max-width: 1200px;
+  min-width: 1000px;
+  width: 100%;
   margin: 40px auto;
 }
 
@@ -466,7 +561,7 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 }
 
 #tours img {
-  width: 38%;
+  width: 40%;
   margin: 20px;
 }
 
@@ -528,7 +623,9 @@ input[name="persons"]:invalid + input[type="submit"]{ */
   background-position: center center;
   box-shadow: inset 0 0 32px 32px white;
   height: 600px;
-  width: 1200px;
+  max-width: 1200px;
+  min-width: 1000px;
+  width: 100%;
   margin: 0% auto;
   gap: 20px;
   transform: scaleX(-1);
@@ -553,6 +650,7 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 }
 
 #price .section-content:hover .section-item {
+  transition-duration: 0.5s;
   transform: scaleX(-1) scale(1.1);
 }
 
@@ -678,9 +776,11 @@ input[name="persons"]:invalid + input[type="submit"]{ */
 }
 
 #clients .section-item:last-child:hover img {
+  transition-duration: 0.5s;
   box-shadow: 0 0 8px 5px #cc3636;
 }
 #clients .section-item:first-child:hover img {
+  transition-duration: 0.5s;
   box-shadow: 0 0 8px 5px #cc3636;
 }
 #clients .section-item:first-child:hover > blockquote::after {
@@ -783,10 +883,10 @@ footer {
 }
 
 footer h2 {
-  font-size: 1.5em;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   padding-bottom: 20px;
+  font-family: Bebas Neue;
 }
 
 footer h3 {
@@ -824,6 +924,10 @@ footer a:hover {
 
 #summary {
   grid-column: 1 / span 5;
+}
+
+#summary > h2:hover::first-letter {
+  color: #cc3636;
 }
 
 #summary > p {
@@ -926,7 +1030,7 @@ footer a:hover {
   bottom: 10px;
   padding: 15px 20px;
   border: 1px solid #cc3636;
-  transition: 0s;
+  transition-duration: 0s;
 }
 
 .scrolled #jesse i {
